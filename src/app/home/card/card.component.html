@@ -1,0 +1,44 @@
+<div>
+    <input type="text" placeholder="Search name or phone" [(ngModel)]="search">
+    <div style="float:right;">
+        <i class="fa fa-list-ul" style="width:2em;height:2em" (click)="list(true)"></i>
+        <i class="fa fa-th" style="width:2em;height:2em" (click)="list(false)"></i>
+    </div>
+</div>
+
+<div class="container row" *ngIf="came && listview; else cardview">
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let con of contact| searchFilter : search; let i = index">
+            <tr>
+                <th>{{i+1}}</th>
+                <th>{{con.name}}</th>
+                <th>{{con.phone}}</th>
+                <th (click)="edit()"><i class="fa fa-edit"></i></th>
+                <th (click)="delete()"><i class="fa fa-trash "></i></th>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<ng-template #cardview>
+    <div *ngFor="let con of contact| searchFilter : search; let i = index" class="container row">
+        <div class="card" style="width:400px" class="col-sm-3">
+            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{con.name}}</h4>
+                <p class="card-text">{{con.phone}}</p>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

@@ -1,0 +1,16 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Add Contact</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modalform form-group form">
+        <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter name"><br>
+        <input type="text" class="form-control" [(ngModel)]="phone" placeholder="Enter Phone"> <br>
+        <button type="submit" (click)='add()' class="btn btn-primary">Save</button>
+    </div>
+</ng-template>
+
+<app-card [contact]="contacts"></app-card>
+<button type="submit" (click)="open(content)" class="btn btn-primary"><i class="fa fa-user-plus"></i></button>

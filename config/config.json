@@ -1,0 +1,5 @@
+{
+    "MONGO": "mongodb://localhost/angular",
+    "PORT": 4000,
+    "SECRET": "PR^CT1C3"
+}
